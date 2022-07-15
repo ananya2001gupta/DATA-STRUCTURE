@@ -1,0 +1,35 @@
+\"Write a program to find the sum of all the digits of a number."\
+
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+
+using namespace std;
+int sumOfDigits(int n)
+{
+    if (n == 0)
+        return 0;
+    return (n % 10) + sumOfDigits(n / 10);
+}
+int main()
+{
+    int n,t;
+  	cin>>t;
+  while(t--)
+  {
+    cin>>n;
+    cout << sumOfDigits(n)<<"\n";
+  }
+    return 0;
+}
+\"Input:
+4
+1234
+456
+12
+1
+Expected Output:
+10
+15
+3
+1"\
