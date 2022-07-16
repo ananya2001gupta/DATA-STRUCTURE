@@ -1,0 +1,57 @@
+\"Write a function removeDuplicates() which receives a array as input and remove the duplicate elements from the array. After the function call, the array will contain a set of unique elements..
+Suppose the array contains the following values:
+{7, 7, 18, 18, 18, 18, 21, 39, 39, 42, 42, 42}
+After a call to removeDuplicates(arr, size); , the array should store the following values:
+{7, 18, 21, 39, 42}
+If the array is empty or does not contain any duplicate values, calling your function should have no effect."\
+
+#include <stdio.h>
+void removeDuplicates(int arr[], int *size) {
+  int j = 1;
+    for (int i = 1; i<=*size-1; i++) 
+    {
+        if (arr[i] != arr[j-1]) 
+        {
+            arr[j] = arr[i];
+            j++;
+        }
+    }
+  *size=j;
+}
+int main()
+{
+    int i, size = 0;
+    scanf("%d", &size);
+
+    int arr[size];
+    for(i = 0; i < size; i++) 
+        scanf("%d", &arr[i]);
+
+    removeDuplicates(arr, &size);
+    for (i = 0; i < size; i++) 
+        printf("%d\n", arr[i]);
+  
+    return 0;
+}
+
+\"
+Input:
+12
+7
+7
+18
+18
+18
+18
+21
+39
+39
+42
+42
+42
+Expected Output:
+7
+18
+21
+39
+42"\
