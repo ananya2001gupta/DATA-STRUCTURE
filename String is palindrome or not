@@ -1,0 +1,52 @@
+\"Given a string, you need to test if it is palindrome or not. If the string is palindrome print “YES”, otherwise print “NO”."\
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int isPalindrome(char str[]) {
+  // Write your code here
+{
+    int n = strlen(str);
+    int a = 0, b = n -1;
+    // Compare the equidistant characters from start and end
+    while (a < b)
+    {
+        if (str[a] != str[b])
+            return 0;
+        a++;
+        b--;
+    }
+    return 1;
+}
+}
+
+int main() 
+{
+  int t,i,j=0;
+  char a[50], b[50];
+  scanf("%d",&t);
+  while(t--)
+  {
+    scanf("%s", a);
+    if(isPalindrome(a)){
+      printf("YES");
+    }else{
+      printf("NO");
+    }
+    printf("\n");
+  }
+}
+
+\"
+Input
+4
+c
+Coding
+cooc
+Code
+Expected Output
+YES
+NO
+YES
+NO
+"\
