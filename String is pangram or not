@@ -1,0 +1,57 @@
+\"A pangram is a word or sentence that contains every letter of the alphabet.  For example: the quick brown fox jumps over the lazy dog.
+Gopal wants to improve his typing speed for programming contests, and he thinks that if he type pangrams, that is best for it. 
+Your task is to help Gopal and given a list of strings made of lowercase letters in the range ascii[a-z], determine whether or not they are pangrams.
+Complete the function isPangram() in the editor. The function receives a string to test as parameter and must return true or false based on the fact that, whether the given string is a pangram or not."\
+
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+bool isPangram(char* str) {
+  // Write your code here
+  int count[26] = {0};
+    for (int i = 0; i < strlen(str); i++)
+    {
+        if (str[i] != ' ')
+            count[str[i] - 'a']++;
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        if (count[i] == 0)
+        {
+            return 0;
+        }
+    }
+    return 1; 
+}
+int main()
+{
+  int t;
+  scanf("%d", &t);
+  char str[10000];
+	
+  while(t--){
+    scanf(" %[^\n]s",str);
+    if(isPangram(str)){
+      printf("YES");
+    }else{
+      printf("NO");
+    }
+  	printf("\n");
+  }
+}
+
+\"
+Input:
+4
+pack my box with five dozen liquor jugs
+pack the box with five dozen liquor jugs
+the quick brown fox jumps over the lazy dog
+the quick brown fox jump over the lazy dog
+Expected Output:
+YES
+NO
+YES
+NO"\
