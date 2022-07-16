@@ -1,0 +1,34 @@
+\"Given a string, count the number of substrings in it which starts from a vowel (‘a’, ‘e’, ‘i’, ‘o’, ‘u’, ‘A’, ‘E’, ‘I’, ‘O’, ‘U’).
+
+As the number of the substrings can be very large, print the count modulo(%) 10007."\
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+# define MAX_LEN 1000000
+int countVowelSubstr(char* str) {
+  // Write your code here
+   int count = 0, n = strlen(str);
+    for (int i = 0; i < n; i++)
+    {
+        if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+        {   
+            // everytime before updating count, doing modulo operation to avoid integer overflow
+            count = (count + (n - i) % 10007) % 10007;
+        }
+    }
+    return count;
+}
+int main(){
+    char str[MAX_LEN + 1];
+    scanf("%s", str);
+    printf("%d", countVowelSubstr(str));
+    return 0;
+}
+
+\"
+Input:
+ACID
+Expected Output:
+6"\
