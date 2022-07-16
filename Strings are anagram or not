@@ -1,0 +1,48 @@
+\" Two strings A and B are called anagrams if they contain all the same characters in the same frequencies. Given two strings, find whether both are anagram of each other or not.
+
+Complete the function isAnagram() that will take two strings as parameters and return 1 if they are anagram and return 0 otherwise."\
+
+#include<bits/stdc++.h>
+using namespace std;
+int isAnagram(string str1, string str2) {
+  int n1 = str1.length();
+    int n2 = str2.length();
+    if (n1 != n2)
+        return false;
+    sort(str1.begin(), str1.end());
+    sort(str2.begin(), str2.end());
+    for (int i = 0; i < n1; i++)
+        if (str1[i] != str2[i])
+            return false;
+    return true;
+}
+int main()
+{
+  int t,i,j=0;
+  string a, b;
+  cin>>t;
+  while(t--)
+  {
+    cin>>a;
+    cin>>b;
+    if(isAnagram(a, b))
+      cout<<"Yes\n";
+    else
+      cout<<"No\n";
+  }
+  return 0;
+}
+
+\" 
+Input:
+3
+Hi
+hI
+Code
+Coder
+AaAaA
+aAaAA
+Expected Output:
+No
+No
+Yes"\
