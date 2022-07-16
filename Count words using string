@@ -1,0 +1,37 @@
+\"Write a function countWords() to count the numbers of words in a string.
+
+A word is defined as text separated by space(' ') or multiple spaces.
+
+The function will receive a string as input and return the numbers of words in this string."\
+
+#include <stdio.h>
+#include<string.h>
+int countWords(char str[]) {
+  // Write your code here
+ int count = 0;
+   int inWord = 0;
+   for (int i=0; i<strlen(str); i++) {
+       if (str[i] == ' ')
+           inWord = 0;
+       else if (inWord == 0) {
+           count++;
+           inWord = 1;
+       }
+   }
+   return count; 
+}
+int main()
+{
+  char str[100] = "\0";
+  int num;
+  scanf("%[^\n]", str);
+  num = countWords(str);
+  printf("%d\n",num);
+  return 0;
+}
+
+\"
+Input:
+madam
+Expected Output:
+1"\
