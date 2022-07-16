@@ -1,0 +1,41 @@
+\" Given a circularly sorted array of N integers, find the minimum number of rotations performed on some sorted array to create this given array.
+Assume there are no duplicate elements in the array, and the rotation is in anti-clockwise direction."\
+
+#include <stdio.h>
+int rotationCount(int arr[], int size) {
+  // Write your code here
+ int min_index = 0;
+   for (int i=0; i<size; i++){
+       if (arr[i] < arr[min_index])
+           min_index = i;
+   }
+   return min_index;
+}
+int main()
+{
+  int T, i, size = 0;
+  scanf("%d", &T);
+
+  while (T--)
+  {
+    scanf("%d", &size);
+
+    int arr[size];
+    for( i = 0; i < size; i++) 
+      scanf("%d", &arr[i]);
+
+    printf("%d\n",rotationCount(arr, size));
+  }
+  return 0;
+}
+
+\"
+Input:
+2
+6
+15 18 3 4 6 12
+6
+1 2 3 4 5 6
+Expected Output:
+2
+0"\
