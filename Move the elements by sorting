@@ -1,0 +1,57 @@
+\"Write a function moveElements which receives an array of n elements (both positive and negative) as input and shift all the negative elements to the right side of the array while maintaining the original order of the positive and negative elements.
+Note: consider 0 as a positive element.
+Suppose the array contains the following values:
+-6 7 13 10 -8 15 5 -9 2 -1
+After a call to moveElements(arr, n); the array should store the following values:
+7 13 10 15 5 2 -6 -8 -9 -1"\
+
+#include <stdio.h>
+void swap(int *x, int *y){
+   int temp = *x;
+   *x = *y;
+   *y = temp;
+}
+void moveElements(int arr[], int n){
+   for (int i=0; i<n; i++){
+       if (arr[i] >= 0){
+           for (int j=i; j>0; j--){
+               if (arr[j-1] < 0)
+                   swap(&arr[j], &arr[j-1]);
+               else
+               break;
+           }
+       }
+   }
+}
+
+int main()
+{
+    int i, size = 0;
+    scanf("%d", &size);
+
+    int arr[size];
+    for( i = 0; i < size; i++) 
+        scanf("%d", &arr[i]);
+
+    moveElements(arr, size);
+    for (i = 0; i < size; i++) 
+        printf("%d\n", arr[i]);
+  
+    return 0;
+}
+
+\"
+Input
+10
+-6 7 13 10 -8 15 5 -9 2 -1
+Expected Output
+7
+13
+10
+15
+5
+2
+-6
+-8
+-9
+-1"\
