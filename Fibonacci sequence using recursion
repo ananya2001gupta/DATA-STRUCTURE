@@ -24,6 +24,33 @@ int main()
     return 0;
 }
 
+
+................................OR...............................
+
+#include <bits/stdc++.h>
+using namespace std;
+void fib_sequence(int n) {
+  long a = 0, b = 1;
+  long c;
+    if (n >= 0)
+        cout << a << endl;
+    if (n > 1)
+        cout << b << endl;
+    for (int i = 2; i < n; i++)
+    {
+        c = a + b;
+        cout << c << endl;
+        a = b;
+        b = c;
+    }
+}
+int main()
+{
+   int n;
+   cin >> n;
+   fib_sequence(n);
+}
+
 \"Input:
 4
 Expected Output:
@@ -31,3 +58,5 @@ Expected Output:
 1
 1
 0 "\
+
+
