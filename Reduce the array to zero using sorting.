@@ -1,0 +1,58 @@
+//" Given an array of N positive integers, you need to perform certain number of reduce operations on it, until all the elements become 0.
+In each reduce operation, you need to find the non-zero minimum element of the array, then reduce the value of each array element by the value of that minimum element.
+Note: An element can only be reduced if its value ≥ 1. "//
+
+#include <bits/stdc++.h>
+using namespace std;
+ vector<int> reduceArray(vector<int> lengths) {
+  // Write your code here
+  vector<int> res;
+  	int count;
+  	do {
+      	count = 0;
+      	int minimum = INT_MAX;
+        for(int i = 0; i < lengths.size(); i++)
+            if(lengths[i] && lengths[i] < minimum)
+                minimum = lengths[i];
+        for(int i = 0; i < lengths.size(); i++)
+            if(lengths[i] > 0) {
+                lengths[i] -= minimum;
+                count++;
+            }
+      	if(count != 0)
+        	res.push_back(count);
+    }while(count != 0);
+  	return res;
+}
+int main()
+{
+  int n = 0, i;
+  cin >> n;
+
+  vector<int> arr(n);
+  for(i = 0; i < n; i++) 
+    cin>>arr[i];
+
+  vector<int> res;
+  res = reduceArray(arr);
+  for (i = 0; i < res.size(); i++) 
+    cout<<res[i]<<endl;
+
+  return 0;
+}
+
+//"
+Input:
+5
+4
+5
+10
+8
+11
+Expected Output:
+5
+4
+3
+2
+1
+"//
