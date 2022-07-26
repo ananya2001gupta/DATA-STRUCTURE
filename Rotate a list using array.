@@ -1,0 +1,50 @@
+//" Given an array of integers and a positive integer R, rotate the array by shifting each element by R positions towards the left in a circular manner. "//
+
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+using namespace std;
+int main()
+{
+    // Write your code here
+	int testCases;
+  	cin >> testCases;
+  	while(testCases--) {
+      	int size;
+      	cin >> size;
+      	int arr[size], temp[size];
+      	for(int i = 0; i < size; i++)
+          	cin >> arr[i];
+      	int rotation, count = 0;
+      	cin >> rotation;
+      	if(rotation >= size)
+          	rotation %= size;
+      	for(int i = rotation; i < size; i++, count++)
+          	temp[count] = arr[i];
+      	for(int i = 0; i < rotation; i++, count++)
+          	temp[count] = arr[i];
+      	for(int i = 0; i < size-1; i++) 
+          	cout << temp[i] << ' ';
+      	cout << temp[size-1] << endl;
+    }
+    // Return 0 to indicate normal termination
+    return 0;
+}
+
+//"
+Input:
+3
+5
+1 2 3 4 5
+6
+6
+4 5 3 2 1 7
+4
+1
+1
+2
+Expected Output:
+2 3 4 5 1
+1 7 4 5 3 2
+1
+"//
