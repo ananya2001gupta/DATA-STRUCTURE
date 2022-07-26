@@ -1,0 +1,40 @@
+//" Given a sorted list of integers with duplicates, find the count of a given number K in that list in O(log n) time. "//
+
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+using namespace std;
+int countOccurrences(int arr[], int n, int x)
+{
+    int res = 0;
+    for (int i=0; i<n; i++)
+        if (x == arr[i])
+          res++;
+    return res;
+}
+// Driver code
+int main()
+{
+  	int n,t,k;
+  	cin>>t;
+  	while(t--)
+    {
+      cin>>n>>k;
+      int arr[n];
+      for(int i=0;i<n;i++)
+        cin>>arr[i];
+      cout << countOccurrences(arr, n, k)<<endl;
+    }
+}
+
+//"
+Input:
+2
+5 1
+1 1 1 1 1
+1 1 
+2
+Expected Output:
+5
+0
+"//
