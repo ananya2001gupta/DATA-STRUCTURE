@@ -1,0 +1,101 @@
+//"Given a postfix expression, evaluate it using stack and print the final output."//
+
+#include<cmath>
+using namespace std;
+
+class CQStack{
+    int maxSize; // size of stack array
+    int* stackArray;
+    int top; // top of stack
+
+    public:
+        // constructor
+        CQStack(int s){
+            maxSize = s; // set array size
+            stackArray = new int[maxSize]; // create array
+            top = -1; // no items yet
+        }
+
+        // Add element on the top of the stack
+        void push(int j){
+            if(isFull()){
+                return;
+            }
+            else{
+                stackArray[++top] = j; // increment top, insert item
+            }
+        }
+
+        // Remove element from the top of the stack
+        int pop(){
+            if (isEmpty()){
+                return -1;
+            }
+            else{
+                int temp=stackArray[top--];
+                return temp; // access item, decrement top
+            }
+        }
+
+        // Return true is stack is empty
+        bool isEmpty(){
+            return (top == -1);
+        }
+
+        // Return true if stack is full
+        bool isFull(){
+            return (top == maxSize-1);
+        }
+};
+
+int evalPostfix(CQStack *stack,string exp){
+    for(int i = 0; i < exp.size(); i++)
+    {
+      	if(isdigit(exp[i]))
+          	stack->push(exp[i] - '0');
+      	else
+        {
+          	int first = stack->pop();
+          	int second = stack->pop();
+          	int result;
+          	switch(exp[i])
+            {
+              case '+': result = first + second;
+                		break;
+              case '-': result = second - first;
+                		break;
+              case '*': result = first * second;
+                		break;
+              case '/': result = second / first;
+                		break;
+              case '^': result = pow(second, first);
+                		break;
+            }
+          	stack->push(result);
+        }
+    }
+  	return stack->pop();
+}
+
+int main(){
+    int t,n;
+    cin>>t;
+    while(t--){
+        string expr;
+        CQStack *stack = new CQStack(1000);
+        cin>>expr;
+        int result = evalPostfix(stack,expr);
+        cout<<result<<endl;
+    }
+    return 0;
+}
+
+//"
+Input:
+2
+8425+-*
+546+*493/+*
+Expected Output:
+-24
+350
+"//
