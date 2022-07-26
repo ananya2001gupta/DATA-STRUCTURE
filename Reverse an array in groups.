@@ -1,0 +1,45 @@
+//" Given an array of integers and an integer k, your task is to reverse the sub-arrays of size k inside the given array. For example,
+If array is {1,2,3,4,5,6,7,8,9} and k =3, then the output array is {3,2,1,6,5,4,9,8,7} i.e. Each sub-array of size 3 is reversed. "//
+
+#include<iostream>
+#include<vector>
+using namespace std;
+vector<int> reverseSubarray(vector<int> arr, int k){
+  	// Write your code here
+    if(k == 1) return arr;
+  	for(int i = 0; i < arr.size(); i+=k) {
+      	int init = i;
+      	int end = (init+k-1 < arr.size()-1) ? init+k-1 : arr.size()-1;
+      	while(init < end) {
+          	int temp = arr[init];
+          	arr[init] = arr[end];
+          	arr[end] = temp;
+          	init++;
+          	end--;
+        }
+    }
+  	return arr;
+}
+int main()
+{
+  int i,n, k;
+  cin>>n;
+  vector<int> arr(n);
+  for(i=0;i<n;i++)
+    cin>>arr[i];
+  cin>>k;
+  vector<int> res;
+  res = reverseSubarray(arr, k);
+  for(i=0;i<res.size();i++)
+    cout<<res[i]<<" ";
+  return 0;
+}
+
+//"
+Input:
+6
+1 2 3 4 5 6
+2
+Expected Output:
+2 1 4 3 6 5
+"//
